@@ -6,16 +6,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.jdbc.core.RowMapper;
 import ru.madrabit.databasedemo.entity.Person;
 import ru.madrabit.databasedemo.jdbc.PersonJdbcDao;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Date;
-import java.util.List;
 
 @SpringBootApplication
 public class DatabaseDemoApplication implements CommandLineRunner {
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());
+
+
 
     @Autowired
     PersonJdbcDao personJdbcDao;

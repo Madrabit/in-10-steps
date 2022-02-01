@@ -14,7 +14,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
 
-@SpringBootApplication
 public class DatabaseDemoApplication implements CommandLineRunner {
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());
@@ -33,8 +32,8 @@ public class DatabaseDemoApplication implements CommandLineRunner {
         logger.info("All users => {}", personJdbcDao.findAll());
         logger.info("User 1001 => {}", personJdbcDao.findById(1001));
         logger.info("Delete user 1002 => {}", personJdbcDao.delete(1002));
-        logger.info("Creat new user => {}", personJdbcDao.create(new Person(1005, "Vasya", "Kiev", new Date())));
-        logger.info("Creat new user => {}", personJdbcDao.update(new Person(1001,"Ira", "Siberia", new Date())));
+//        logger.info("Creat new user => {}", personJdbcDao.create(new Person(1005, "Vasya", "Kiev", new Date())));
+//        logger.info("Creat new user => {}", personJdbcDao.update(new Person(1001,"Ira", "Siberia", new Date())));
 
     }
 }

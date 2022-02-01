@@ -4,7 +4,6 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
-import ru.madrabit.databasedemo.DatabaseDemoApplication;
 import ru.madrabit.databasedemo.entity.Person;
 
 import java.sql.ResultSet;

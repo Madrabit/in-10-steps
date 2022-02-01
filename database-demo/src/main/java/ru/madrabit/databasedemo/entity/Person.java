@@ -1,14 +1,28 @@
 package ru.madrabit.databasedemo.entity;
 
+import javax.persistence.*;
 import java.util.Date;
 
+@Entity
+@Table(name = "PERSON")
+@NamedQuery(name="find_all_persons", query = "SELECT p FROM Person p")
 public class Person {
+
+    @Id
+    @GeneratedValue
     private int id;
+
     private String name;
     private String location;
     private Date birthDate;
 
     public Person() {
+    }
+
+    public Person(String name, String location, Date birthDate) {
+        this.name = name;
+        this.location = location;
+        this.birthDate = birthDate;
     }
 
     public Person(int id, String name, String location, Date birthDate) {

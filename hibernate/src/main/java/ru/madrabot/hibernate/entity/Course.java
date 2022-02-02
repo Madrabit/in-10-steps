@@ -2,6 +2,7 @@ package ru.madrabot.hibernate.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
@@ -18,6 +19,10 @@ public class Course {
 
     public Course(Long id, String name) {
         this.id = id;
+        this.name = name;
+    }
+
+    public Course(String name) {
         this.name = name;
     }
 

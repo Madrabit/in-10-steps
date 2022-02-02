@@ -26,7 +26,8 @@ public class HibernateApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        final Course course = courseRepository.findById(1L);
+        final Course course = courseRepository.findById(1001L);
         logger.info("Get course by Id {}", course);
+        courseRepository.create(new Course("Microsoft course"));
     }
 }

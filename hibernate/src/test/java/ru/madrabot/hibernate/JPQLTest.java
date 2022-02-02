@@ -40,7 +40,7 @@ class JPQLTest {
 
     @Test
     void jpql_typed_where() {
-        final TypedQuery<Course> query = em.createQuery("SELECT c FROM Course c WHERE c.name LIKE '%First'", Course.class);
+        final TypedQuery<Course> query = em.createQuery("SELECT c FROM Course c WHERE c.name LIKE 'First course'", Course.class);
         final List<Course> list = query.getResultList();
         logger.info("Typed select where first {}", list);
     }

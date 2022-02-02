@@ -73,4 +73,7 @@ public class CourseRepository {
         em.refresh(course5);
         em.flush();
     }
+
+    public void createAndUpdateDateView() {
+    }
 }

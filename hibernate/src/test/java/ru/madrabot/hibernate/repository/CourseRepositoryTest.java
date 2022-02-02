@@ -26,4 +26,15 @@ class CourseRepositoryTest {
         courseRepository.delete(1001L);
         assertNull(courseRepository.findById(1001L));
     }
+
+    @Test
+    @DirtiesContext
+    void save() {
+        final Course course = courseRepository.findById(1001L);
+        assertEquals("First course", course.getName());
+        course.setName("First course - Updated");
+        courseRepository.save(course);
+        final Course course2 = courseRepository.findById(1001L);
+        assertEquals("First course - Updated", course2.getName());
+    }
 }

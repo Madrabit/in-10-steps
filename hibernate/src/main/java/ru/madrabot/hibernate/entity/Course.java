@@ -1,5 +1,6 @@
 package ru.madrabot.hibernate.entity;
 
+import jdk.jfr.Name;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.data.annotation.CreatedDate;
 
@@ -8,6 +9,13 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name="Course")
+@NamedQueries(
+        value = {
+                @NamedQuery(name = "query_get_all_courses", query = "SELECT c FROM Course c"),
+                @NamedQuery(name = "query_get_all_courses_like", query = "SELECT c FROM Course c WHERE c.name LIKE 'First course'")
+        }
+)
+
 public class Course {
 
     @Id

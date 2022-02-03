@@ -1,11 +1,13 @@
 package ru.madrabot.hibernate.entity;
 
-import jdk.jfr.Name;
+
 import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name="Course")
@@ -31,6 +33,9 @@ public class Course {
 
     @UpdateTimestamp
     private LocalDateTime lastUpdatedDate;
+
+    @OneToMany(mappedBy = "course", fetch = FetchType.EAGER)
+    private List<Review> reviews = new ArrayList<>();
 
     public Course() {
     }
@@ -76,6 +81,18 @@ public class Course {
 
     public void setLastUpdatedDate(LocalDateTime lastUpdatedDate) {
         this.lastUpdatedDate = lastUpdatedDate;
+    }
+
+    public List<Review> getReviews() {
+        return reviews;
+    }
+
+    public void addReview(Review review) {
+        this.reviews.add(review);
+    }
+
+    public void removeReview(Review review) {
+        this.reviews.remove(review);
     }
 
     @Override

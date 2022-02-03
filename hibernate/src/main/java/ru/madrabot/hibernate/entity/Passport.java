@@ -12,6 +12,9 @@ public class Passport {
     @Column(name="number", nullable = false)
     private String number;
 
+    @OneToOne(mappedBy = "passport")
+    private Student student;
+
     public Passport() {
     }
 
@@ -29,6 +32,14 @@ public class Passport {
 
     public void setNumber(String number) {
         this.number = number;
+    }
+
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
     }
 
     @Override

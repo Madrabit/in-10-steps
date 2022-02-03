@@ -2,9 +2,11 @@ package ru.madrabot.hibernate.repository;
 
 import org.springframework.stereotype.Repository;
 import ru.madrabot.hibernate.entity.Course;
+import ru.madrabot.hibernate.entity.Review;
 
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Repository
 @Transactional
@@ -74,6 +76,14 @@ public class CourseRepository {
         em.flush();
     }
 
-    public void createAndUpdateDateView() {
+    public void addReviewsToCourse(Long id, List<Review> reviews) {
+        final Course course = findById(id);
+
+        for (Review review : reviews) {
+            course.addReview(review);
+            review.setCourse(course);
+            em.persist(course);
+            em.persist(review);
+        }
     }
 }

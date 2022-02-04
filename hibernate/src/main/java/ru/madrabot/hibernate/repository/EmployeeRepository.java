@@ -2,6 +2,8 @@ package ru.madrabot.hibernate.repository;
 
 import org.springframework.stereotype.Repository;
 import ru.madrabot.hibernate.entity.Employee;
+import ru.madrabot.hibernate.entity.FullTimeEmployee;
+import ru.madrabot.hibernate.entity.PartTimeEmployee;
 
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
@@ -21,7 +23,13 @@ public class EmployeeRepository {
         em.persist(employee);
     }
 
-    public List<Employee> retrieveAllEmployees() {
-       return em.createQuery("select e From Employee e", Employee.class).getResultList();
+    public List<FullTimeEmployee> retrieveAllFullTimeEmployees() {
+       return em.createQuery("select e From FullTimeEmployee e", FullTimeEmployee.class).getResultList();
     }
+
+    public List<PartTimeEmployee> retrieveAllPartTimeEmployees() {
+        return em.createQuery("select e From PartTimeEmployee e", PartTimeEmployee.class).getResultList();
+    }
+
+
 }

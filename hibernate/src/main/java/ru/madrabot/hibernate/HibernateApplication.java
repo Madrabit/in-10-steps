@@ -40,7 +40,7 @@ public class HibernateApplication implements CommandLineRunner {
         Employee partTime = new PartTimeEmployee("Mike", new BigDecimal("50"));
         employeeRepository.save(fullTime);
         employeeRepository.save(partTime);
-        logger.info("All employees -> {}", employeeRepository.retrieveAllEmployees());
-
+        logger.info("All Full Time employees -> {}", employeeRepository.retrieveAllFullTimeEmployees());
+        logger.info("All Part Time employees -> {}", employeeRepository.retrieveAllPartTimeEmployees());
     }
 }

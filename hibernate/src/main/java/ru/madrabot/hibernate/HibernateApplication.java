@@ -5,13 +5,12 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import ru.madrabot.hibernate.entity.Course;
-import ru.madrabot.hibernate.entity.Review;
-import ru.madrabot.hibernate.entity.Student;
+import ru.madrabot.hibernate.entity.*;
 import ru.madrabot.hibernate.repository.CourseRepository;
+import ru.madrabot.hibernate.repository.EmployeeRepository;
 import ru.madrabot.hibernate.repository.StudentRepository;
 
-import java.util.List;
+import java.math.BigDecimal;
 
 
 @SpringBootApplication
@@ -21,11 +20,14 @@ public class HibernateApplication implements CommandLineRunner {
 
     private final CourseRepository courseRepository;
     private final StudentRepository studentRepository;
+    private final EmployeeRepository employeeRepository;
 
 
-    public HibernateApplication(CourseRepository courseRepository, StudentRepository studentRepository) {
+    public HibernateApplication(CourseRepository courseRepository, StudentRepository studentRepository,
+                                EmployeeRepository employeeRepository) {
         this.courseRepository = courseRepository;
         this.studentRepository = studentRepository;
+        this.employeeRepository = employeeRepository;
     }
 
     public static void main(String[] args) {
@@ -34,6 +36,11 @@ public class HibernateApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        studentRepository.insertStudentAndCourse(new Student("Test name std"), new Course("Some Course"));
+        Employee fullTime = new FullTimeEmployee("Jhon", new BigDecimal("1000"));
+        Employee partTime = new PartTimeEmployee("Mike", new BigDecimal("50"));
+        employeeRepository.save(fullTime);
+        employeeRepository.save(partTime);
+        logger.info("All employees -> {}", employeeRepository.retrieveAllEmployees());
+
     }
 }

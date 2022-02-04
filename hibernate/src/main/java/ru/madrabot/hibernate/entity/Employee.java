@@ -15,7 +15,6 @@ public abstract class Employee {
     @Column(name="name", nullable = false)
     private String name;
 
-
     public Employee() {
     }
 

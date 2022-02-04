@@ -1,6 +1,7 @@
 package ru.madrabot.hibernate.repository;
 
 import org.springframework.stereotype.Repository;
+import ru.madrabot.hibernate.entity.Course;
 import ru.madrabot.hibernate.entity.Passport;
 import ru.madrabot.hibernate.entity.Student;
 
@@ -83,6 +84,10 @@ public class StudentRepository {
         em.flush();
     }
 
-    public void createAndUpdateDateView() {
+    public void insertStudentAndCourse(Student student, Course course) {
+        student.addCourses(course);
+        course.addStudents(student);
+        em.persist(course);
+        em.persist(student);
     }
 }

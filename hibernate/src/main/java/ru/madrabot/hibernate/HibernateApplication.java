@@ -7,6 +7,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import ru.madrabot.hibernate.entity.Course;
 import ru.madrabot.hibernate.entity.Review;
+import ru.madrabot.hibernate.entity.Student;
 import ru.madrabot.hibernate.repository.CourseRepository;
 import ru.madrabot.hibernate.repository.StudentRepository;
 
@@ -33,8 +34,6 @@ public class HibernateApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        Review review1 = new Review("4", "Not Bad");
-        Review review2 = new Review("2", "Horrible");
-        courseRepository.addReviewsToCourse(1001L, List.of(review1, review2));
+        studentRepository.insertStudentAndCourse(new Student("Test name std"), new Course("Some Course"));
     }
 }

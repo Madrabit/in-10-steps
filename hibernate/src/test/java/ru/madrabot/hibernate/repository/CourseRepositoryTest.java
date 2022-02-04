@@ -8,6 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.DirtiesContext;
 import ru.madrabot.hibernate.entity.Course;
 import ru.madrabot.hibernate.entity.Review;
+import ru.madrabot.hibernate.entity.Student;
 
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
@@ -73,5 +74,13 @@ class CourseRepositoryTest {
         final Review review = em.find(Review.class, 4001L);
         System.out.println(review.getCourse());
         logger.info("Retrieve courses from review", review.getCourse());
+    }
+
+    @Test
+    @Transactional
+    public void retrieveCoursesFromStudent() {
+        final Student student = em.find(Student.class, 2001L);
+        System.out.println(student.getCourses());
+        logger.info("Retrieve courses from review", student.getCourses());
     }
 }

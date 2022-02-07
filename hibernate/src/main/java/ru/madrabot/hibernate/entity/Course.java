@@ -2,7 +2,9 @@ package ru.madrabot.hibernate.entity;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.hibernate.annotations.Where;
 import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
@@ -19,6 +21,8 @@ import java.util.List;
         }
 )
 @Cacheable
+@SQLDelete(sql = "UPDATE course SET deleted=true where id=?")
+@Where(clause = "deleted=false")
 public class Course {
 
     @Id
@@ -45,6 +49,9 @@ public class Course {
     )
     @JsonIgnore
     private List<Student> students = new ArrayList<>();
+
+    @Column
+    private boolean deleted = Boolean.FALSE;
 
     public Course() {
     }
@@ -115,6 +122,7 @@ public class Course {
     public void removeStudents(Student student) {
         this.students.remove(student);
     }
+
 
     @Override
     public String toString() {

@@ -1,6 +1,5 @@
 package ru.madrabot.hibernate.repository;
 
-import org.hibernate.annotations.Sort;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,10 +10,9 @@ import ru.madrabot.hibernate.entity.Course;
 
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
-import java.awt.print.Pageable;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringBootTest
 class CourseSpringDataRepositoryTest {

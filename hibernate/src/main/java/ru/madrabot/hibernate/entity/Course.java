@@ -1,6 +1,7 @@
 package ru.madrabot.hibernate.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.data.annotation.CreatedDate;
 
@@ -42,6 +43,7 @@ public class Course {
     joinColumns = @JoinColumn(name="COURSE_ID"),
             inverseJoinColumns = @JoinColumn(name="STUDENT_ID")
     )
+    @JsonIgnore
     private List<Student> students = new ArrayList<>();
 
     public Course() {

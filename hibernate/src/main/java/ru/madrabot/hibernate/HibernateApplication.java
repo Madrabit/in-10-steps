@@ -36,11 +36,11 @@ public class HibernateApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-//        Employee fullTime = new FullTimeEmployee("Jhon", new BigDecimal("1000"));
-//        Employee partTime = new PartTimeEmployee("Mike", new BigDecimal("50"));
-//        employeeRepository.save(fullTime);
-//        employeeRepository.save(partTime);
-//        logger.info("All Full Time employees -> {}", employeeRepository.retrieveAllFullTimeEmployees());
-//        logger.info("All Part Time employees -> {}", employeeRepository.retrieveAllPartTimeEmployees());
+        Employee fullTime = new FullTimeEmployee("Jhon", new BigDecimal("1000"));
+        Employee partTime = new PartTimeEmployee("Mike", new BigDecimal("50"));
+        employeeRepository.save(fullTime);
+        employeeRepository.save(partTime);
+        logger.info("All Full Time employees -> {}", employeeRepository.retrieveAllFullTimeEmployees());
+        logger.info("All Part Time employees -> {}", employeeRepository.retrieveAllPartTimeEmployees());
     }
 }

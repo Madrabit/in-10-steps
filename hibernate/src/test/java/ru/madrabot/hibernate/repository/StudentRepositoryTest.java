@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import ru.madrabot.hibernate.entity.Address;
 import ru.madrabot.hibernate.entity.Passport;
 import ru.madrabot.hibernate.entity.Student;
 
@@ -29,6 +30,15 @@ class StudentRepositoryTest {
     @Transactional
     public void retrieveStudentWithPassport() {
         Student student = em.find(Student.class, 2001L);
+        logger.info("student -> {}", student);
+        logger.info("passport -> {}", student.getPassport());
+    }
+
+    @Test
+    @Transactional
+    public void studentWIthAddress() {
+        Student student = em.find(Student.class, 2001L);
+        student.setAddress(new Address("test1", "test2", "Moscow"));
         logger.info("student -> {}", student);
         logger.info("passport -> {}", student.getPassport());
     }

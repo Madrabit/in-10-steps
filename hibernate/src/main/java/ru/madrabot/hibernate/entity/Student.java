@@ -21,6 +21,9 @@ public class Student {
     @ManyToMany(mappedBy = "students")
     private List<Course> courses = new ArrayList<>();
 
+    @Embedded
+    private Address address;
+
     public Student() {
     }
 
@@ -60,6 +63,14 @@ public class Student {
         this.courses.remove(course);
     }
 
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
     @Override
     public String toString() {
         return "\nStudent{" +
@@ -67,5 +78,6 @@ public class Student {
                 ", name='" + name + '\'' +
                 '}';
     }
+
 
 }

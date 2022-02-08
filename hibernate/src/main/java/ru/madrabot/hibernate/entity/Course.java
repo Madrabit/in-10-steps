@@ -17,6 +17,8 @@ import java.util.List;
 @NamedQueries(
         value = {
                 @NamedQuery(name = "query_get_all_courses", query = "SELECT c FROM Course c"),
+                @NamedQuery(name = "query_get_all_courses_joined_students",
+                        query = "SELECT c FROM Course c JOIN FETCH c.students s JOIN FETCH s.passport"),
                 @NamedQuery(name = "query_get_all_courses_like", query = "SELECT c FROM Course c WHERE c.name LIKE 'First course'")
         }
 )
